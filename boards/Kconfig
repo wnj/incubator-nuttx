@@ -2263,6 +2263,16 @@ config ARCH_BOARD_TEENSY_3X
 		Teensy-3.0).  The primary difference is that the Teensy 3.0 has a
 		MK20DX128VLH5 with slightly less capability.
 
+config ARCH_BOARD_TEENSY_36
+	bool "PJRC Teensy++ 3.6 board"
+	depends on ARCH_CHIP_MK66FX1M0VMD18
+	select ARCH_HAVE_LEDS
+	select KINETIS_SDHC_PULLUP if KINETIS_SDHC
+	---help---
+		This is the port of NuttX to the PJRC Teensy++ 3.6 board.  This board is
+		developed by http://pjrc.com/teensy/.  The Teensy++ 3.6 is based
+		on an NXP MK66FX1M0VMD18 MCU. The port supports only the Teensy 3.6.
+
 config ARCH_BOARD_TEENSY_4X
 	bool "PJRC Teensy++ 4.x board"
 	depends on ARCH_CHIP_MIMXRT1062DVL6A
@@ -2786,6 +2796,7 @@ config ARCH_BOARD
 	default "sure-pic32mx"             if ARCH_BOARD_SUREPIC32MX
 	default "teensy-2.0"               if ARCH_BOARD_TEENSY_20
 	default "teensy-3.x"               if ARCH_BOARD_TEENSY_3X
+	default "teensy-3.6"               if ARCH_BOARD_TEENSY_36
 	default "teensy-4.x"               if ARCH_BOARD_TEENSY_4X
 	default "teensy-lc"                if ARCH_BOARD_TEENSY_LC
 	default "tm4c123g-launchpad"       if ARCH_BOARD_TM4C123G_LAUNCHPAD
@@ -2941,6 +2952,9 @@ source "boards/arm/kinetis/kwikstik-k40/Kconfig"
 endif
 if ARCH_BOARD_TEENSY_3X
 source "boards/arm/kinetis/teensy-3.x/Kconfig"
+endif
+if ARCH_BOARD_TEENSY_36
+source "boards/arm/kinetis/teensy-3.6/Kconfig"
 endif
 if ARCH_BOARD_TWR_K60N512
 source "boards/arm/kinetis/twr-k60n512/Kconfig"
