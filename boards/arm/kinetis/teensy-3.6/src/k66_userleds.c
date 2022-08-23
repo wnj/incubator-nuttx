@@ -45,53 +45,27 @@
  * Name: board_userled_initialize
  ****************************************************************************/
 
-uint32_t board_userled_initialize(void)
-{
-  kinetis_pinconfig(GPIO_LED_R);
-  kinetis_pinconfig(GPIO_LED_G);
-  kinetis_pinconfig(GPIO_LED_B);
-  return BOARD_NLEDS;
+uint32_t board_userled_initialize(void) {
+	kinetis_pinconfig(GPIO_LED);
+	return BOARD_NLEDS;
 }
 
 /****************************************************************************
  * Name: board_userled
  ****************************************************************************/
 
-void board_userled(int led, bool ledon)
-{
-  uint32_t ledcfg;
-
-  if (led == BOARD_LED_R)
-    {
-      ledcfg = GPIO_LED_R;
-    }
-  else if (led == BOARD_LED_G)
-    {
-      ledcfg = GPIO_LED_G;
-    }
-  else if (led == BOARD_LED_B)
-    {
-      ledcfg = GPIO_LED_B;
-    }
-  else
-    {
-      return;
-    }
-
-  kinetis_gpiowrite(ledcfg, !ledon); /* Low illuminates */
+void board_userled(int led, bool ledon) {
+	if (led == BOARD_LED) {
+		kinetis_gpiowrite(GPIO_LED, ledon);
+	}
 }
 
 /****************************************************************************
  * Name: board_userled_all
  ****************************************************************************/
 
-void board_userled_all(uint32_t ledset)
-{
-  /* Low illuminates */
-
-  kinetis_gpiowrite(GPIO_LED_R, (ledset & BOARD_LED_R_BIT) == 0);
-  kinetis_gpiowrite(GPIO_LED_G, (ledset & BOARD_LED_G_BIT) == 0);
-  kinetis_gpiowrite(GPIO_LED_B, (ledset & BOARD_LED_B_BIT) == 0);
+void board_userled_all(uint32_t ledset) {
+	kinetis_gpiowrite(GPIO_LED, (ledset & BOARD_LED_BIT) != 0);
 }
 
 #endif /* CONFIG_ARCH_LEDS */

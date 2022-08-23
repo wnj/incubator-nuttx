@@ -69,14 +69,6 @@
  * Pre-processor Definitions
  ****************************************************************************/
 
-/* Summary of all possible settings */
-
-#define LED_NOCHANGE      0 /* LED_IRQSENABLED, LED_INIRQ, LED_SIGNAL, LED_ASSERTION */
-#define LED_OFF_OFF_OFF   1 /* LED_STARTED */
-#define LED_OFF_OFF_ON    2 /* LED_HEAPALLOCATE */
-#define LED_OFF_ON_OFF    3 /* LED_STACKCREATED */
-#define LED_ON_OFF_OFF    4 /* LED_PANIC */
-
 /****************************************************************************
  * Public Functions
  ****************************************************************************/
@@ -89,62 +81,28 @@
  *
  ****************************************************************************/
 
-void board_autoled_initialize(void)
-{
-  kinetis_pinconfig(GPIO_LED_R);
-  kinetis_pinconfig(GPIO_LED_G);
-  kinetis_pinconfig(GPIO_LED_B);
+void board_autoled_initialize(void) {
+	kinetis_pinconfig(GPIO_LED);
 }
 
 /****************************************************************************
  * Name: board_autoled_on
  ****************************************************************************/
 
-void board_autoled_on(int led)
-{
-  if (led != LED_NOCHANGE)
-    {
-      bool redoff   = true;
-      bool greenoff = true;
-      bool blueoff  = true;
-
-      switch (led)
-        {
-          default:
-          case LED_OFF_OFF_OFF:
-            break;
-
-          case LED_OFF_OFF_ON:
-            blueoff = false;
-            break;
-
-          case LED_OFF_ON_OFF:
-            greenoff = false;
-            break;
-
-          case LED_ON_OFF_OFF:
-            redoff = false;
-            break;
-        }
-
-      kinetis_gpiowrite(GPIO_LED_R, redoff);
-      kinetis_gpiowrite(GPIO_LED_G, greenoff);
-      kinetis_gpiowrite(GPIO_LED_B, blueoff);
-    }
+void board_autoled_on(int led) {
+	if (led != 2) {
+		kinetis_gpiowrite(GPIO_LED, (led != 0));
+	}
 }
 
 /****************************************************************************
  * Name: board_autoled_off
  ****************************************************************************/
 
-void board_autoled_off(int led)
-{
-  if (led == LED_ON_OFF_OFF)
-    {
-      kinetis_gpiowrite(GPIO_LED_R, true);
-      kinetis_gpiowrite(GPIO_LED_G, true);
-      kinetis_gpiowrite(GPIO_LED_B, true);
-    }
+void board_autoled_off(int led) {
+	if (led != 2) {
+		kinetis_gpiowrite(GPIO_LED, false);
+	}
 }
 
 #endif /* CONFIG_ARCH_LEDS */

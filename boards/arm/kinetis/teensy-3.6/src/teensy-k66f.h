@@ -188,35 +188,14 @@
 
 #define GPIO_SD_CARDDETECT (GPIO_PULLDOWN | PIN_INT_BOTH | PIN_PORTD | PIN10)
 
-/* Two push buttons, SW2 and SW3, are available on FRDM-K66F board, where SW2
- * is connected to PTC6 and SW3 is connected to PTA4.
- * Besides the general purpose input/output functions, SW2 and SW3 can be
- * low-power wake up signal. Also, only SW3 can be a non-maskable interrupt.
- *
- *   Switch    GPIO Function
- *   -------- ---------------------------------------------------------------
- *   SW2      PTD11/LLWU_P25/SPI2_PCS0/SDHC0_CLKIN/LPUART0_CTS/FB_A19
- *   SW3      PTA10/LLWU_P22/FTM2_CH0/MII0_RXD2/FTM2_QD_PHA/TPM2_CH0/TRACE_D0
- */
-
-#define GPIO_SW2           (GPIO_PULLUP | PIN_INT_BOTH | PIN_PORTD | PIN11)
-#define GPIO_SW3           (GPIO_PULLUP | PIN_INT_BOTH | PIN_PORTA | PIN10)
-
 /* An RGB LED is connected through GPIO as shown below:
  *
  *   LED    K66
  *   ------ -------------------------------------------------------
- *   RED    PTC9/ADC1_SE5B/CMP0_IN3/FTM3_CH5/I2S0_RX_BCLK/
- *          FB_AD6/SDRAM_A14/FTM_FLT0
- *   GREEN  PTE6/LLWU_P16/SPI1_PCS3/UART3_CTS/I2S0_MCLK/
- *          FTM3_CH1/USB0_SOF_OUT
- *   BLUE   PTA11/LLWU_P23/FTM2_CH1/MII0_RXCLK/I2C2_SDA/
- *          FTM2_QD_PHB/TPM2_CH1
+ *   RED    PTC5
  */
 
-#define GPIO_LED_R         (GPIO_LOWDRIVE | GPIO_OUTPUT_ONE | PIN_PORTC | PIN9)
-#define GPIO_LED_G         (GPIO_LOWDRIVE | GPIO_OUTPUT_ONE | PIN_PORTE | PIN6)
-#define GPIO_LED_B         (GPIO_LOWDRIVE | GPIO_OUTPUT_ONE | PIN_PORTA | PIN11)
+#define GPIO_LED         (GPIO_LOWDRIVE | GPIO_OUTPUT_ONE | PIN_PORTC | PIN5)
 
 /* SPI1 on J6 */
 

@@ -220,16 +220,12 @@
 
 /* LED index values for use with board_userled() */
 
-#define BOARD_LED_R       0
-#define BOARD_LED_G       1
-#define BOARD_LED_B       2
-#define BOARD_NLEDS       3
+#define BOARD_LED_        0
+#define BOARD_NLEDS       1
 
 /* LED bits for use with board_userled_all() */
 
-#define BOARD_LED_R_BIT   (1 << BOARD_LED_R)
-#define BOARD_LED_G_BIT   (1 << BOARD_LED_G)
-#define BOARD_LED_B_BIT   (1 << BOARD_LED_B)
+#define BOARD_LED_BIT   (1 << BOARD_LED)
 
 /* If CONFIG_ARCH_LEDs is defined, then NuttX will control the LED on board
  * the Freedom K66F.  The following definitions describe how NuttX controls
@@ -249,26 +245,6 @@
 #define LED_ASSERTION     0 /* An assertion failed      (no change)       */
 #define LED_PANIC         4 /* The system has crashed    FLASH OFF    OFF */
 #undef  LED_IDLE            /* K66 is in sleep mode     (Not used)        */
-
-/* Button definitions *******************************************************/
-
-/* Two push buttons, SW2 and SW3, are available on FRDM-K66F board, where SW2
- * is connected to PTC6 and SW3 is connected to PTA4.
- * Besides the general purpose input/output functions, SW2 and SW3 can be
- * low-power wake up signal. Also, only SW3 can be a non-maskable interrupt.
- *
- *   Switch GPIO Function
- *   ------ ---------------------------------------------------------------
- *   SW2    PTC6/SPI0_SOUT/PD0_EXTRG/I2S0_RX_BCLK/FB_AD9/I2S0_MCLK/LLWU_P10
- *   SW3    PTA4/FTM0_CH1/NMI_b/LLWU_P3
- */
-
-#define BUTTON_SW2        0
-#define BUTTON_SW3        1
-#define NUM_BUTTONS       2
-
-#define BUTTON_SW2_BIT    (1 << BUTTON_SW2)
-#define BUTTON_SW3_BIT    (1 << BUTTON_SW3)
 
 /* Alternative pin resolution ***********************************************/
 
