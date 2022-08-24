@@ -165,7 +165,7 @@
 
 /* FREEDOM-K66F GPIOs *******************************************************/
 
-/* A micro Secure Digital (SD) card slot is available on the FRDM-K66F
+/* A micro Secure Digital (SD) card slot is available on the Teensy 3.6
  * connected to the SD Host Controller (SDHC) signals of the MCU.
  * This slot will accept micro format SD memory cards.
  * The SD card detect pin (PTD10) is an open switch that shorts with VDD when

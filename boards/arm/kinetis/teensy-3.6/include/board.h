@@ -105,7 +105,7 @@
  *                48Mhz = 168Mhz / (6 + 1) * (1 + 1)
  */
 
-#if (BOARD_MCG_FREQ == 168000000L)
+#if (BOARD_MCG_FREQ == 160000000L)
 #  define BOARD_SIM_CLKDIV2_USBFRAC     2
 #  define BOARD_SIM_CLKDIV2_USBDIV      7
 #  define BOARD_SIM_CLKDIV2_FREQ        (BOARD_SOPT2_FREQ / \
@@ -130,6 +130,10 @@
 
 #define BOARD_TPM_CLKSRC     SIM_SOPT2_TPMSRC_MCGCLK
 #define BOARD_TPM_FREQ       BOARD_SIM_CLKDIV3_FREQ
+
+
+#define BOARD_USB_CLKSRC              SIM_SOPT2_USBSRC
+#define BOARD_USB_FREQ                BOARD_SIM_CLKDIV2_FREQ
 
 /* SDHC clocking ************************************************************/
 
@@ -267,7 +271,7 @@
  * on the Freedom Board.  In this case, Arduino pin D1 provides UART TX and
  * pin D0 privies UART RX.
  *
- * The I/O headers on the FRDM-K66F board are arranged to enable
+ * The I/O headers on the Teensy 3.6 board are arranged to enable
  * compatibility with Arduino shield. The outer rows of pins (even numbered
  * pins) on the headers, share the same mechanical spacing and placement with
  * the I/O headers on the Arduino Revision 3 (R3) standard.
@@ -275,7 +279,7 @@
  * The Arduino D0 and D1 pins then correspond to pins 2 and 4 on the J1 I/O
  * connector:
  *
- *  Arduino Pin              FRDM-K66F J1 Connector
+ *  Arduino Pin              Teensy 3,6 Connector
  *  ------------------------ -----------------------
  *  UART RX, Arduino D0 pin  Pin 2, PTC3, UART1_RX
  *  UART TX, Arduino D1 pin  Pin 4, PTC4, UART1_TX
