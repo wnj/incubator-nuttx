@@ -1919,7 +1919,7 @@ static void kinetis_blocksetup(struct sdio_dev_s *dev,
 {
   uint32_t regval;
 
-  mcinfo("blocksize=%ld, total transfer=%ld (%ld blocks)\n", blocksize,
+  mcinfo("blocksize=%u, total transfer=%u (%u blocks)\n", blocksize,
          blocksize * nblocks, nblocks);
 
   /* Configure block size for next transfer */
